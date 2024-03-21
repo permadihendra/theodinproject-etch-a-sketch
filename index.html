@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <button id="btnselectgrid" class="btnselectgrid">Choose Grid</button>
+      <button id="btnremovegrid" class="btnselectgrid">Remove Grid</button>
+    </div>
+    <div id="grid-container" class="grid-container"></div>
+  </body>
+  <script src=".//app.js"></script>
+  <script>
+    //target the grid-container
+    const gridcontainer = document.getElementById("grid-container");
+
+    // function makeGrid(col, row) {
+    //   for (i = 0; i < col * row; i++) {
+    //     //create grid cell
+    //     const gridcell = document.createElement("div");
+    //     gridcell.setAttribute(
+    //       "style",
+    //       "background-color:pink; width: 220px; height: 220px; margin: 10px"
+    //     );
+    //     gridcontainer.appendChild(gridcell);
+    //   }
+    // }
+
+    function makeGrid() {
+      let col, row;
+      col = prompt("Enter the numbers of Column :");
+      row = prompt("Enter the numbers of Row");
+
+      for (i = 0; i < row; i++) {
+        const gridrow = document.createElement("div");
+        gridrow.setAttribute(
+          "style",
+          "display:flex; flex-direction:row; align-items:center; justify-content: space-around; background-color:black;width: 100%;"
+        );
+
+        for (j = 0; j < col; j++) {
+          const gridcell = document.createElement("div");
+          gridcell.setAttribute(
+            "style",
+            "width:48px; height:48px; margin-right:2px; border-radius:5px; "
+          );
+
+          gridcell.className = "gridcell";
+          gridrow.appendChild(gridcell);
+        }
+
+        gridcontainer.appendChild(gridrow).className = "row";
+      }
+    }
+
+    // function makeGrid(col, row) {
+    //   for (i = 0; i < row; i++) {
+    //     const gridrow = document.createElement("div");
+    //     gridrow.setAttribute(
+    //       "style",
+    //       "display:flex; flex-direction:row; align-items:center; background-color: black; height: 250px; width: 100%; margin: 2px"
+    //     );
+    //     gridcontainer.appendChild(gridrow).className = "row";
+    //   }
+
+    //   const rows = document.getElementsByClassName("row");
+    //   console.log(rows.length);
+
+    //   for (i = 0; i < rows.length; i++) {
+    //     for (j = 0; j < row; j++) {
+    //       const cell = document.createElement("div");
+    //       cell.setAttribute(
+    //         "style",
+    //         "background-color: pink; width:220px; height:220px; margin-right:2px"
+    //       );
+    //       rows[i].appendChild(cell).className = "cell";
+    //     }
+    //   }
+    // }
+
+    function removeRow() {
+      //const rowNodes = document.getElementById("grid-container").childNodes;
+      const rowNodes = gridcontainer.childNodes;
+      console.log(rowNodes);
+      if (gridcontainer.hasChildNodes) {
+        for (i = 0; i < rowNodes.length; i++) {
+          gridcontainer.removeChild(rowNodes[i]);
+        }
+      }
+    }
+
+    //CODE execution
+    const btnMakeGrid = document.getElementById("btnselectgrid");
+    btnMakeGrid.addEventListener("click", () => {
+      makeGrid();
+      console.log(gridcontainer.childNodes);
+    });
+
+    const btnRemoveGrid = document.getElementById("btnremovegrid");
+    btnRemoveGrid.addEventListener("click", () => {
+      removeRow();
+    });
+  </script>
+</html>

@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+div.gridcell:hover {
+  border: 1px solid white;
+  width: 40px;
+  height: 40px;
+  background-color: pink;
+}
+
+.header {
+  margin-bottom: 5px;
+}
+
+button.btnselectgrid {
+  height: 30px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+
+button.btnselectgrid:hover {
+  background-color: blue;
+}
